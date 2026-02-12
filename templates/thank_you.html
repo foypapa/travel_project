@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %}Thank You | Trip Pe Chale{% endblock %}
+{% block meta_description %}Thank you for your request. Trip Pe Chale has received your enquiry and our team will contact you shortly.{% endblock %}
+{% block content %}
+
+<section class="booking-section">
+    <div class="container booking-shell">
+        <div class="booking-intro">
+            <p class="eyebrow">Request Received</p>
+            <h1>Thank You, {{ guest_name }}</h1>
+            <p>We have received your request for <strong>{{ package_name }}</strong>. Our team will contact you shortly with the next steps.</p>
+            <a href="{{ url_for('home') }}" class="btn-primary">Back to Home</a>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

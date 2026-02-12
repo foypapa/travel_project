@@ -1,0 +1,168 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="{% block meta_description %}Curated luxury travel experiences across India's most iconic destinations.{% endblock %}">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <meta name="author" content="Trip Pe Chale">
+    <meta name="theme-color" content="#1a120d">
+    <title>{% block title %}Trip Pe Chale | Luxury India Journeys{% endblock %}</title>
+    <link rel="canonical" href="{{ request.base_url }}">
+
+    <meta property="og:locale" content="en_US">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Trip Pe Chale">
+    <meta property="og:title" content="{{ self.title()|striptags }}">
+    <meta property="og:description" content="{{ self.meta_description()|striptags }}">
+    <meta property="og:url" content="{{ request.url }}">
+    <meta property="og:image" content="{{ url_for('static', filename='images/logo/trippechale.webp', _external=True) }}">
+    <meta property="og:image:alt" content="Trip Pe Chale logo and travel branding">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{{ self.title()|striptags }}">
+    <meta name="twitter:description" content="{{ self.meta_description()|striptags }}">
+    <meta name="twitter:image" content="{{ url_for('static', filename='images/logo/trippechale.webp', _external=True) }}">
+
+    <link rel="icon" type="image/svg+xml" href="{{ url_for('static', filename='images/logo/favicon.svg') }}">
+    <link rel="icon" type="image/webp" sizes="192x192" href="{{ url_for('static', filename='images/logo/trippechale.webp') }}">
+    <link rel="apple-touch-icon" href="{{ url_for('static', filename='images/logo/trippechale.webp') }}">
+    <link rel="manifest" href="{{ url_for('static', filename='site.webmanifest') }}">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "TravelAgency",
+            "name": "Trip Pe Chale",
+            "url": "{{ request.url_root.rstrip('/') }}",
+            "logo": "{{ url_for('static', filename='images/logo/trippechale.webp', _external=True) }}",
+            "email": "contact@trippechale.com",
+            "telephone": "+91 98765 43210",
+            "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "A-12, Connaught Place",
+                "addressLocality": "New Delhi",
+                "addressRegion": "Delhi",
+                "postalCode": "110001",
+                "addressCountry": "IN"
+            },
+            "sameAs": [
+                "https://instagram.com",
+                "https://wa.me/919876543210"
+            ]
+        }
+    </script>
+    {% block meta_extra %}{% endblock %}
+</head>
+<body>
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+
+    <div class="scroll-progress" aria-hidden="true">
+        <span></span>
+    </div>
+
+    <header class="navbar">
+        <div class="container nav-wrapper">
+            <a href="{{ url_for('home') }}" class="logo" aria-label="Trip Pe Chale Home">
+                <img src="{{ url_for('static', filename='images/logo/trippechale.webp') }}" alt="Trip Pe Chale logo" width="180" height="90" decoding="async" fetchpriority="high">
+            </a>
+
+            <button class="menu-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Toggle navigation">
+                Menu
+            </button>
+
+            <nav class="nav-links" id="site-nav">
+                <a href="{{ url_for('home') }}">Home</a>
+                <a href="{{ url_for('home') }}#destinations">Destinations</a>
+                <a href="{{ url_for('home') }}#packages">Packages</a>
+                <a href="{{ url_for('home') }}#contact">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <main id="main-content">
+        {% block content %}{% endblock %}
+    </main>
+
+    <button class="back-btn" id="back-btn" type="button" aria-label="Go back to previous page">
+        &#8592; Back
+    </button>
+
+    <footer class="footer" id="contact">
+        <div class="contact-showcase container">
+            <div class="pin-marker" aria-hidden="true"></div>
+
+            <div class="contact-grid">
+                <article class="contact-item">
+                    <span class="contact-icon">&#9993;</span>
+                    <div>
+                        <h3>Email</h3>
+                        <p><a href="mailto:contact@trippechale.com">contact@trippechale.com</a></p>
+                    </div>
+                </article>
+
+                <article class="contact-item">
+                    <span class="contact-icon">&#9742;</span>
+                    <div>
+                        <h3>Call Us</h3>
+                        <p><a href="tel:+919876543210">+91 98765 43210</a></p>
+                    </div>
+                </article>
+
+                <article class="contact-item">
+                    <span class="contact-icon">&#8962;</span>
+                    <div>
+                        <h3>Address</h3>
+                        <p><a href="https://maps.google.com/?q=A-12+Connaught+Place+New+Delhi+110001+India" target="_blank" rel="noopener noreferrer">A-12, Connaught Place, New Delhi 110001, India</a></p>
+                    </div>
+                </article>
+            </div>
+
+            <div class="review-strip">
+                <strong>Customer Review</strong>
+                <div class="review-links">
+                    <a href="https://www.trustpilot.com/" target="_blank" rel="noopener noreferrer">Trustpilot</a>
+                    <a href="https://www.tripadvisor.com/" target="_blank" rel="noopener noreferrer">Tripadvisor</a>
+                    <a href="https://maps.google.com/" target="_blank" rel="noopener noreferrer">Google Reviews</a>
+                </div>
+            </div>
+
+            <div class="social-row" aria-label="Social links">
+                <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <rect x="4" y="4" width="16" height="16" rx="5"></rect>
+                        <circle cx="12" cy="12" r="3.5"></circle>
+                        <circle cx="17.5" cy="6.5" r="1"></circle>
+                    </svg>
+                </a>
+                <a href="https://wa.me/919876543210" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M12 4.5a7.5 7.5 0 0 0-6.53 11.2L4.5 20l4.42-1.16A7.5 7.5 0 1 0 12 4.5Z"></path>
+                        <path d="M9.8 9.2c.2-.5.4-.5.6-.5h.5c.2 0 .4.1.5.4l.6 1.4c.1.2 0 .5-.2.7l-.5.6c.5 1 1.3 1.8 2.3 2.3l.6-.5c.2-.2.5-.2.7-.1l1.3.6c.3.1.4.3.4.5v.5c0 .2 0 .4-.4.6-.5.2-1.6.3-3.3-.7-1.5-.8-2.7-2-3.5-3.5-.9-1.8-.8-2.9-.5-3.3Z"></path>
+                    </svg>
+                </a>
+                <a href="mailto:contact@trippechale.com" aria-label="Email">
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <rect x="3.5" y="6" width="17" height="12" rx="2"></rect>
+                        <path d="m4.5 7.5 7.5 5.5 7.5-5.5"></path>
+                    </svg>
+                </a>
+            </div>
+
+            <p class="copyright">Copyright 2026 Trip Pe Chale. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <a class="concierge-float" href="#contact" aria-label="Open concierge contact">
+        Concierge
+    </a>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}" defer></script>
+</body>
+</html>

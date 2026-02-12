@@ -1,0 +1,23 @@
+{
+  "name": "Trip Pe Chale",
+  "short_name": "TripPeChale",
+  "description": "Curated luxury travel experiences across India's most iconic destinations.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#1a120d",
+  "theme_color": "#1a120d",
+  "icons": [
+    {
+      "src": "/static/images/logo/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "/static/images/logo/trippechale.webp",
+      "sizes": "192x192",
+      "type": "image/webp",
+      "purpose": "any"
+    }
+  ]
+}

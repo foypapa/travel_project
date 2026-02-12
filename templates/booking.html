@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block title %}Book {{ package.name }} | Trip Pe Chale{% endblock %}
+{% block meta_description %}Book {{ package.name }} and share your preferences to receive a tailored luxury trip proposal from Trip Pe Chale.{% endblock %}
+{% block content %}
+
+<section class="booking-section">
+    <div class="container booking-shell">
+        <div class="booking-intro">
+            <p class="eyebrow">Travel Planning Request</p>
+            <h1>Book {{ package.name }}</h1>
+            <p>Share your details and our travel specialist will contact you with a tailored proposal.</p>
+            {% if booking_error %}
+            <p class="form-alert form-alert-error">{{ booking_error }}</p>
+            {% endif %}
+        </div>
+
+        <form method="POST" class="booking-form">
+            <input type="text" name="name" placeholder="Full Name" autocomplete="name" value="{{ booking_form.name if booking_form else '' }}" required>
+            <input type="email" name="email" placeholder="Email Address" autocomplete="email" value="{{ booking_form.email if booking_form else '' }}" required>
+            <input type="tel" name="phone" placeholder="Phone Number" autocomplete="tel" value="{{ booking_form.phone if booking_form else '' }}" required>
+            <button type="submit" class="btn-primary">Request Callback</button>
+        </form>
+    </div>
+</section>
+
+{% endblock %}
+

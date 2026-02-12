@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block title %}{{ destination.name }} | Trip Pe Chale{% endblock %}
+{% block meta_description %}Explore {{ destination.name }} with curated itineraries, premium stays, and tailored travel planning by Trip Pe Chale.{% endblock %}
+
+{% block content %}
+<section class="destination-hero" data-bg="{{ url_for('static', filename='images/destination/' + destination.image) }}">
+    <div class="container">
+        <p class="eyebrow">Destination Collection</p>
+        <h1>{{ destination.name }}</h1>
+        <p>{{ destination.description }}</p>
+    </div>
+</section>
+
+<section class="destination-content">
+    <div class="container">
+        <h2 class="section-title">About {{ destination.name }}</h2>
+        <p class="lead-text">{{ destination.tagline }} {{ destination.description }}</p>
+
+        <h2 class="section-title">Available Packages</h2>
+
+        <div class="package-grid">
+            {% for package in related_packages %}
+            <article class="package-card">
+                <img src="{{ url_for('static', filename='images/packages_images/' + package.image) }}" alt="{{ package.name }}" loading="lazy" decoding="async" sizes="(max-width: 760px) 92vw, (max-width: 1100px) 46vw, 30vw" width="640" height="420">
+                <div class="package-content">
+                    <h3>{{ package.name }}</h3>
+                    <p>{{ package.duration }}</p>
+                    <p>{{ package.summary }}</p>
+                    <div class="price">{{ package.price }}</div>
+                    <a href="{{ url_for('package', name=package.slug) }}" class="btn-secondary">View Details</a>
+                </div>
+            </article>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock %}
+

@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% block title %}{{ package.name }} | Trip Pe Chale{% endblock %}
+{% block meta_description %}View {{ package.name }} package details, highlights, inclusions, and pricing with Trip Pe Chale.{% endblock %}
+{% block content %}
+
+<section class="package-hero" data-bg="{{ url_for('static', filename='images/packages_images/' + package.image) }}">
+    <div class="container">
+        <p class="eyebrow">Signature Package</p>
+        <h1>{{ package.name }}</h1>
+        <p>{{ package.duration }} | {{ package.price }}</p>
+    </div>
+</section>
+
+<section class="package-details">
+    <div class="container">
+        <div class="package-layout">
+            <article class="package-main">
+                <h2>Overview</h2>
+                <p>{{ package.summary }}</p>
+
+                <h2>Experience Highlights</h2>
+                <ul>
+                    {% for highlight in package.highlights %}
+                    <li>{{ highlight }}</li>
+                    {% endfor %}
+                </ul>
+
+                <h2>What Is Included</h2>
+                <ul>
+                    {% for item in package.includes %}
+                    <li>{{ item }}</li>
+                    {% endfor %}
+                </ul>
+            </article>
+
+            <aside class="package-sidebar">
+                <div class="price-box">
+                    <h3>{{ package.price }}</h3>
+                    <p>{{ package.duration }}</p>
+                </div>
+
+                <a href="{{ url_for('booking', name=package.slug) }}" class="btn-primary">Book Consultation</a>
+            </aside>
+        </div>
+    </div>
+</section>
+
+{% endblock %}
+

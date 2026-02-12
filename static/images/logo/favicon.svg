@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Trip Pe Chale icon">
+  <defs>
+    <linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f0c878"/>
+      <stop offset="100%" stop-color="#ba8c4a"/>
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="14" fill="#1f1a17"/>
+  <path d="M32 9c-9.5 0-17.2 7.6-17.2 17.1 0 10.9 13.3 24.3 16.2 27 0.6 0.6 1.5 0.6 2.1 0 2.9-2.7 16.2-16.1 16.2-27C49.2 16.6 41.5 9 32 9zm0 23.7a6.6 6.6 0 1 1 0-13.2 6.6 6.6 0 0 1 0 13.2z" fill="url(#g)"/>
+</svg>

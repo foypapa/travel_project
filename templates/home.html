@@ -1,0 +1,302 @@
+{% extends "base.html" %}
+{% block title %}Trip Pe Chale | Curated India Luxury Travel{% endblock %}
+{% block meta_description %}Discover curated luxury tours across Kashmir, Goa, and Ladakh with premium stays, private itineraries, and concierge support.{% endblock %}
+{% block meta_extra %}
+<link rel="preload" as="image" href="{{ url_for('static', filename='images/hero/kashmir.webp') }}" fetchpriority="high">
+{% endblock %}
+{% block content %}
+
+<section class="hero" aria-label="Featured destinations">
+    <div class="hero-slider">
+        <div class="slide active" data-bg="{{ url_for('static', filename='images/hero/kashmir.webp') }}">
+            <div class="slide-content">
+                <p class="eyebrow">Signature Journey</p>
+                <h1>Heavenly Kashmir</h1>
+                <p>Lakefront mornings, alpine panoramas, and intimate private moments.</p>
+            </div>
+        </div>
+
+        <div class="slide" data-bg="{{ url_for('static', filename='images/hero/goa.webp') }}">
+            <div class="slide-content">
+                <p class="eyebrow">Coastal Escape</p>
+                <h1>Luxury Goa Retreat</h1>
+                <p>Beachfront stays, chef-led dining, and sunset sailing experiences.</p>
+            </div>
+        </div>
+
+        <div class="slide" data-bg="{{ url_for('static', filename='images/hero/ladakh.webp') }}">
+            <div class="slide-content">
+                <p class="eyebrow">Expedition Collection</p>
+                <h1>Ladakh Adventure Trail</h1>
+                <p>High-altitude routes planned with precision, safety, and comfort.</p>
+            </div>
+        </div>
+    </div>
+
+    <button class="slider-btn prev" type="button" aria-label="Previous slide">
+        <span>&#10094;</span>
+    </button>
+    <button class="slider-btn next" type="button" aria-label="Next slide">
+        <span>&#10095;</span>
+    </button>
+
+    <div class="hero-dots" aria-label="Hero slider navigation">
+        <button class="hero-dot active" type="button" data-slide="0" aria-label="Go to slide 1"></button>
+        <button class="hero-dot" type="button" data-slide="1" aria-label="Go to slide 2"></button>
+        <button class="hero-dot" type="button" data-slide="2" aria-label="Go to slide 3"></button>
+    </div>
+</section>
+
+<section class="search-bar" aria-label="Find a tour">
+    <div class="container search-wrapper">
+        <h2 class="search-title">Design Your Journey</h2>
+
+        <form class="search-form" action="#" method="GET">
+            <select name="theme" aria-label="Travel theme">
+                <option value="">Select Theme</option>
+                <option>Adventure</option>
+                <option>Romance</option>
+                <option>Family</option>
+                <option>Wellness</option>
+            </select>
+
+            <select name="destination" aria-label="Destination">
+                <option value="">Select Destination</option>
+                <option>Goa</option>
+                <option>Kashmir</option>
+                <option>Ladakh</option>
+            </select>
+
+            <select name="duration" aria-label="Duration">
+                <option value="">Select Duration</option>
+                <option>3 to 4 Days</option>
+                <option>5 to 6 Days</option>
+                <option>7+ Days</option>
+            </select>
+
+            <button type="submit" class="btn-search">Request Plan</button>
+        </form>
+    </div>
+</section>
+
+<section class="luxury-strip fade-up" aria-label="Premium service highlights">
+    <div class="container luxury-strip-inner">
+        <div class="luxury-item">
+            <strong>Private Itineraries</strong>
+            <span>Designed for your pace and preferences.</span>
+        </div>
+        <div class="luxury-item">
+            <strong>Verified Partners</strong>
+            <span>Handpicked hotels and local specialists.</span>
+        </div>
+        <div class="luxury-item">
+            <strong>On-Trip Concierge</strong>
+            <span>Real support from booking to return.</span>
+        </div>
+    </div>
+</section>
+
+<section class="experiences fade-up" id="experiences">
+    <div class="container">
+        <h2 class="section-title">Explore By Experience</h2>
+
+        <div class="experience-grid">
+            <a href="{{ url_for('destination', name='ladakh') }}" class="experience-card">
+                <div class="experience-badge">
+                    <span class="experience-emoji" aria-hidden="true">&#x1F3D4;&#xFE0F;</span>
+                </div>
+                <h3>Adventure</h3>
+            </a>
+
+            <a href="{{ url_for('destination', name='kashmir') }}" class="experience-card">
+                <div class="experience-badge">
+                    <span class="experience-emoji" aria-hidden="true">&#x1F496;</span>
+                </div>
+                <h3>Romance</h3>
+            </a>
+
+            <a href="{{ url_for('destination', name='goa') }}" class="experience-card">
+                <div class="experience-badge">
+                    <span class="experience-emoji" aria-hidden="true">&#x1F30A;</span>
+                </div>
+                <h3>Coastal Luxury</h3>
+            </a>
+
+            <a href="#packages" class="experience-card">
+                <div class="experience-badge">
+                    <span class="experience-emoji" aria-hidden="true">&#x1F9ED;</span>
+                </div>
+                <h3>Custom Tours</h3>
+            </a>
+
+            <a href="#contact" class="experience-card">
+                <div class="experience-badge">
+                    <span class="experience-emoji" aria-hidden="true">&#x1F552;</span>
+                </div>
+                <h3>Concierge Support</h3>
+            </a>
+        </div>
+    </div>
+</section>
+
+<section class="featured-destinations section-dark fade-up" id="destinations">
+    <div class="container">
+        <h2 class="section-title light">Featured Destinations</h2>
+
+        <div class="destination-grid">
+            {% for destination in featured_destinations %}
+            <a href="{{ url_for('destination', name=destination.slug) }}" class="destination-card">
+                <img src="{{ url_for('static', filename='images/destination/' + destination.image) }}" alt="{{ destination.name }}" loading="lazy" decoding="async" sizes="(max-width: 760px) 92vw, (max-width: 1100px) 46vw, 30vw" width="640" height="400">
+                <div class="overlay">
+                    <h3>{{ destination.name }}</h3>
+                    <p>{{ destination.tagline }}</p>
+                </div>
+            </a>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<section class="featured-packages fade-up" id="packages">
+    <div class="container">
+        <h2 class="section-title">Featured Packages</h2>
+
+        <div class="package-grid">
+            {% for package in featured_packages %}
+            <article class="package-card">
+                <span class="package-ribbon">{{ "Bestseller" if loop.index == 1 else "Popular" }}</span>
+                <img src="{{ url_for('static', filename='images/packages_images/' + package.image) }}" alt="{{ package.name }}" loading="lazy" decoding="async" sizes="(max-width: 760px) 92vw, (max-width: 1100px) 46vw, 30vw" width="640" height="420">
+                <div class="package-content">
+                    <h3>{{ package.name }}</h3>
+                    <p class="package-meta">{{ package.duration }}</p>
+                    <p>{{ package.summary }}</p>
+                    <div class="price">{{ package.price }}</div>
+                    <div class="package-actions">
+                        <a href="{{ url_for('package', name=package.slug) }}" class="btn-secondary">View Details</a>
+                        <a href="{{ url_for('booking', name=package.slug) }}" class="btn-primary">Get Quote</a>
+                    </div>
+                </div>
+            </article>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<section class="stats section-dark fade-up" aria-label="Company highlights">
+    <div class="container stats-grid">
+        <div class="stat-item">
+            <h2 class="counter" data-target="1200">0</h2>
+            <p>Luxury Travelers</p>
+        </div>
+        <div class="stat-item">
+            <h2 class="counter" data-target="35">0</h2>
+            <p>Curated Journeys</p>
+        </div>
+        <div class="stat-item">
+            <h2 class="counter" data-target="14">0</h2>
+            <p>Destination Specialists</p>
+        </div>
+        <div class="stat-item">
+            <h2 class="counter" data-target="98">0</h2>
+            <p>Guest Satisfaction</p>
+        </div>
+    </div>
+</section>
+
+<section class="testimonials fade-up" id="testimonials">
+    <div class="container">
+        <h2 class="section-title">Guest Stories</h2>
+
+        <div class="testimonial-grid">
+            <article class="testimonial-card">
+                <p>"Every detail felt intentional. We traveled stress-free and in style throughout the trip."</p>
+                <h4>Arjun Sharma</h4>
+                <span>Mumbai</span>
+            </article>
+
+            <article class="testimonial-card">
+                <p>"Our Kashmir journey was beautifully designed, from transfers to hotel selection and activities."</p>
+                <h4>Riya Mehta</h4>
+                <span>Delhi</span>
+            </article>
+
+            <article class="testimonial-card">
+                <p>"Professional execution, excellent communication, and genuinely premium service quality."</p>
+                <h4>Karan Verma</h4>
+                <span>Bengaluru</span>
+            </article>
+        </div>
+    </div>
+</section>
+
+<section class="why-us section-dark fade-up">
+    <div class="container">
+        <h2 class="section-title light">Why Travel With Us</h2>
+
+        <div class="why-grid">
+            <article class="why-card">
+                <div class="why-icon">
+                    <span class="why-emoji" aria-hidden="true">&#x1F4CD;</span>
+                </div>
+                <h3>Destination Intelligence</h3>
+                <p>On-ground experts and verified partners in every featured location.</p>
+            </article>
+
+            <article class="why-card">
+                <div class="why-icon">
+                    <span class="why-emoji" aria-hidden="true">&#x1F5C2;&#xFE0F;</span>
+                </div>
+                <h3>End-To-End Planning</h3>
+                <p>Transfers, stays, activities, and support unified under one itinerary.</p>
+            </article>
+
+            <article class="why-card">
+                <div class="why-icon">
+                    <span class="why-emoji" aria-hidden="true">&#x2728;</span>
+                </div>
+                <h3>Premium Curation</h3>
+                <p>Handpicked hotels, private experiences, and comfort-first logistics.</p>
+            </article>
+
+            <article class="why-card">
+                <div class="why-icon">
+                    <span class="why-emoji" aria-hidden="true">&#x1F91D;</span>
+                </div>
+                <h3>Personal Concierge</h3>
+                <p>Fast, direct support before departure and during your journey.</p>
+            </article>
+        </div>
+    </div>
+</section>
+
+<section class="final-cta fade-up" id="enquiry">
+    <div class="container cta-wrapper enquiry-wrapper">
+        <h2>Quick Enquiry</h2>
+
+        {% if enquiry_message %}
+        <p class="form-alert {{ 'form-alert-success' if enquiry_status == 'success' else 'form-alert-error' }}">
+            {{ enquiry_message }}
+        </p>
+        {% endif %}
+
+        <form class="enquiry-form" action="{{ url_for('enquiry') }}" method="POST">
+            <input type="text" name="name" placeholder="Enter Your Name" autocomplete="name" required>
+            <input type="tel" name="mobile" placeholder="Enter Your Mobile" autocomplete="tel" required>
+            <textarea name="query" placeholder="Enter Your Query" rows="4" required></textarea>
+            <input type="email" name="email" placeholder="Enter Your Email" autocomplete="email" required>
+            <select name="country" required>
+                <option value="">Select Your Country</option>
+                <option>India</option>
+                <option>United States</option>
+                <option>United Kingdom</option>
+                <option>United Arab Emirates</option>
+                <option>Canada</option>
+                <option>Australia</option>
+            </select>
+            <button type="submit" class="enquiry-submit">Submit</button>
+        </form>
+    </div>
+</section>
+
+{% endblock %}
+
